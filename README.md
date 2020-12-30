@@ -1,2 +1,2 @@
-# study_python
-python study memo
+# TIL_python
+TIL python
