@@ -266,6 +266,136 @@ print(square(3) + square(4))  # 25
 print("함수 호출 후")  # 함수 호출 후
 
 
+# 4> 'return 문': 함수에 어떤 정보를 주면 특정 값을 반환.(돌려줌) + 함수를 즉시 종료시킴.
+# 예시1)
+def get_square(c):
+    return c * c
 
+
+print(get_square(3))  # 3 * 3 = 9
+
+y = get_square(2)
+print(y)  # 2 * 2 = 4 > y = 4. # print(y) = print(4) > 최종출력 4.
+
+
+# 예시2)
+def get_square(d):
+    return d * d
+
+
+print(get_square(3) + get_square(4))
+# 3 * 3 = 9 + 4 * 4 = 16  # 9 + 16 = 25
+
+
+# 예시3)
+def square(n):
+    print("함수 시작")
+    return n * n
+    # print("함수 끝")  # Dead Code(의미없는 코드) - 사용될 일 없는 코드
+
+
+print(square(3))  # 함수 시작 # 9
+print("Hello Harry!")  # Hello Harry!
+
+
+# 5> 'return' 과 'print' 의 차이
+def print_square(m):  # 파라미터 m의 제곱을 '출력' 해주는 함수.
+    print(m * m)
+
+
+def get_square(m):  # 파라미터 m의 제곱을 '리턴' 해주는 함수.
+    return m * m
+
+
+print_square(2)  # m = 2 / 2 * 2 = 4 > '4' 출력.
+get_square(2)  # m = 2 / 2 * 2 = 4 > get_square 가 '4'로 대체됨.
+# 하지만 대체되기만 할 뿐, 출력하라는 명령이 없으므로 아무것도 출력되지않고 그대로 함수종료.
+print(print_square(3))  # 9 와 None 이 출력.
+# m = 3 / 3 * 3 = 9 > print 9 > '9' 출력.
+# print_square() 함수에는 return 문이 없음 > return 할 값이 없으므로 'None' 출력.
+# 파이썬에선 리턴문이 없으면, 리턴값이 없다는 의미에서 'None' 출력.
+
+
+# 6> 옵셔널 파라미터(Optional Parameter): 필수로 값을 넘겨줄 필요가 없는 파라미터.
+# 파라미터에는 '기본값(default value)'를 설정할 수 있다. 기본값을 설정하면 호출시 파라미터에 꼭 값을 넘겨줄 필요가 없음.
+# 옵셔널 파라미터는 갯수는 상관없으며, 반드시 "마지막에 위치" 해야 함!
+def myself(name, age, nationality="영국"):
+    print("내 이름은 {}".format(name))
+    print("나이는 {}".format(age))
+    print("국적은 {}".format(nationality))
+
+
+myself("해리 포터", 17)  # 옵셔널 파라미터 제공하지 않음 # 내 이름은 해리 포터 나이는 17 국적은 영국.
+print()
+myself("론 위즐리", 18, "미국") # 옵셔널 파라미터 제공 # 내 이름은 론 위즐리 나이는 18 국적은 미국.
+
+
+# 7> Syntactic Sugar: 자주 쓰이는 표현을 더 간략하게 쓸 수 있게 해주는 문법.
+x = 1
+# 더하기 연산
+x = x + 1  == 'x += 1'
+# 곱하기 연산
+x = x * 2 == 'x *= 2'
+# 빼기 연산
+x = x - 3 == 'x -= 3'
+# 나누기 연산
+x = x / 2 == 'x /= 2'
+# 나머지 연산
+x = x % 7 == 'x %= 7'
+
+
+# 8> scope(범위): 변수의 사용 가능한 범위.
+# 함수에서 변수를 사용할때, 로컬 변수 > 글로벌 변수 순으로 사용함.
+# 예시1) 로컬 변수(local variable): 함수 내에서 정의해, 함수 내에서만 사용.
+def my_function():
+    f = 3  # 로컬변수(local variable)
+    print(f)
+
+
+my_function()  # 함수호출 > x = 3 > print(x = 3) > '3' 출력
+# print(f)  # 함수호출 > x = 3 > print(x = 3) > my_function()줄을 거쳐 print(x) 실행 > 오류발생
+# > NameError: name 'f' is not defined('f'가 정의된적 없다) > 'f'는 로컬 변수이므로 유효하지 않은 범위에서 사용.
+
+# 예시2) 전역 변수(global variable): 함수 밖에서 정의해, 모든 곳에서 사용. 단, 함수 내에서 수정 할 수 없음.
+x = 2
+
+def my_function():
+    print(x)
+
+
+my_function()  # x = 2 > 함수 > my_function 함수호출 > print(x = 2) > '2' 출력.
+print(x)  # x = 2 > '2' 출력.
+
+
+# 예시3)
+x = 2  # 전역(글로벌) 변수
+
+def my_function():
+    x = 3  # 로컬 변수
+    print(x)  # 함수내에서 동작시 로컬 변수 > 글로벌 변수 순으로 사용.
+
+
+my_function()  # my_function 함수호출 > x = 3 > print(x = 3) > '3' 출력.
+print(x)  # x = 2 > '2' 출력. # 글로벌 변수 사용.
+
+
+# 파라미터도 로컬 변수!
+def square(x):  # 파라미터 'x' = square 함수 내에서만 쓸 수 있는 로컬 변수!
+    return x * x
+
+
+print(square(3))  # x = 3 > 3 * 3 = '9' 출력.
+
+
+# 예제1)
+x = 10
+
+def my_function():
+    y = 5
+    print(x + y)
+
+
+my_function()  # x + y = 10 + 5 = '15' 출력.
+print(x)  # x = '10' 출력.
 
 
