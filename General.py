@@ -399,3 +399,24 @@ my_function()  # x + y = 10 + 5 = '15' 출력.
 print(x)  # x = '10' 출력.
 
 
+# 9> 상수 (Constant): 변하지 않고 항상 일정한 값을 가지는 수. 변수 이름의 모든 글자를 '대문자'!
+# 예제1)
+PI = 3.14  # 원주율 '파이' = 상수
+
+# 반지름을 받아서 원의 넓이 계산
+def calculate_area(r):  # r = 원의 반지름
+    return PI * r * r
+
+
+radius = 4  # 반지름
+print(f"반지름이 {radius}이면, 넓이는 {calculate_area(radius)}")
+# 반지름이 4이면, 넓이는 50.24
+
+radius = 6
+print(f"반지름이 {radius}이면, 넓이는 {calculate_area(radius)}")
+# 반지름이 6이면, 넓이는 113.03999999999999
+
+radius = 7
+print(f"반지름이 {radius}이면, 넓이는 {calculate_area(radius)}")
+# 반지름이 7이면, 넓이는 153.86
+
