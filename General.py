@@ -29,7 +29,7 @@ def some_function_name():
     print("Hello!")
 
 
-# 모든 상수이름은 '대문자'
+# 모든 상수 이름은 '대문자'
 SOME_CONSTANT_NAME = 3.14
 
 # '의미있는 이름' 사용.
@@ -41,13 +41,14 @@ print(PI * radius * radius)
 def say_hello():
     print("Hello, Harry!")
 
+
 # White space(화이트 스페이스): 들여쓰기는 무조건 '4스페이스' 사용.
 
 
 def say_hello():
     print("Hello, Harry!")  # 들여쓰기 4번
 
-# 함수 정의: 함수 정의 '위,아래로 빈 줄이 2개씩' 있어야. 파일의 첫 줄이 함수면 괜찮다.
+# 함수 정의: 함수 정의 '위,아래로 빈 줄이 2개씩.' 파일의 첫 줄이 함수면 괜찮다.
 
 
 def a():  # 위,아래 빈 줄 2줄씩.
@@ -56,7 +57,7 @@ def a():  # 위,아래 빈 줄 2줄씩.
 
 # 괄호 안: 괄호 바로 안은 띄어쓰기 하지 말 것.
 # spam( ham[ 1 ], { eggs: 2 } )  # 띄어쓰기의 안좋은 예.
-a(a[1], {a: 2})
+
 
 # 함수 괄호: 함수 정의/호출시, 함수 이름과 골호 사이 띄어쓰기 하지 말 것.
 
@@ -69,19 +70,19 @@ def spam(a):
 
 
 # 쉼표: 쉼표 앞은 띄어쓰기 하지 말 것.
-print(a, b)  # good     print(a , b) >  # bad
+print(a, a)  # good     print(a , b) >  # bad
 
 # 지정연산자: 지정연산자 앞뒤로 띄어쓰기를 하나씩.
 x = 1  # good
 
 # 연산자: 기본적으로 연산자 앞뒤로 띄어쓰기를 하나씩.
-i = i + 1
-submitted += 1
+i = a + 1
+a += 1
 
 # + 하지만 연산의 '우선순위' 강조를 위해서는 연산자 앞뒤로 띄어쓰기를 붙이는 것을 권장.
 x = x*2 - 1
-hypot2 = x*x + y*say_hello()
-c = (a+b) * (a-b)
+x = x*x + a*a
+c = (a+x) * (a-x)
 
 # 코멘트: 일반 코드와 같은 줄에 코멘트를 쓸 경우, 코멘트 앞 띄어쓰기를 최소 두 개.
 x = x + 1  # 코멘트
@@ -386,21 +387,21 @@ print(print_square(3))  # 9 와 None 이 출력.
 # 6> 옵셔널 파라미터(Optional Parameter): 필수로 값을 넘겨줄 필요가 없는 파라미터.
 # 파라미터에는 '기본값(default value)'를 설정할 수 있다. 기본값을 설정하면 호출시 파라미터에 꼭 값을 넘겨줄 필요가 없음.
 # 옵셔널 파라미터는 갯수는 상관없으며, 반드시 "마지막에 위치" 해야 함!
-def myself(name, age, nationality="영국"):
+def myself(name, age1, nationality="영국"):
     print("내 이름은 {}".format(name))
-    print("나이는 {}".format(age))
+    print("나이는 {}".format(age1))
     print("국적은 {}".format(nationality))
 
 
 myself("해리 포터", 17)  # 옵셔널 파라미터 제공하지 않음 # 내 이름은 해리 포터 나이는 17 국적은 영국.
 print()
-myself("론 위즐리", 18, "미국") # 옵셔널 파라미터 제공 # 내 이름은 론 위즐리 나이는 18 국적은 미국.
+myself("론 위즐리", 18, "미국")  # 옵셔널 파라미터 제공 # 내 이름은 론 위즐리 나이는 18 국적은 미국.
 
 
 # 7> Syntactic Sugar: 자주 쓰이는 표현을 더 간략하게 쓸 수 있게 해주는 문법.
 x = 1
 # 더하기 연산
-x = x + 1  == 'x += 1'
+x = x + 1 == 'x += 1'
 # 곱하기 연산
 x = x * 2 == 'x *= 2'
 # 빼기 연산
@@ -426,6 +427,7 @@ my_function()  # 함수호출 > x = 3 > print(x = 3) > '3' 출력
 # 예시2) 전역 변수(global variable): 함수 밖에서 정의해, 모든 곳에서 사용. 단, 함수 내에서 수정 할 수 없음.
 x = 2
 
+
 def my_function():
     print(x)
 
@@ -436,6 +438,7 @@ print(x)  # x = 2 > '2' 출력.
 
 # 예시3)
 x = 2  # 전역(글로벌) 변수
+
 
 def my_function():
     x = 3  # 로컬 변수
@@ -457,6 +460,7 @@ print(square(3))  # x = 3 > 3 * 3 = '9' 출력.
 # 예제1)
 x = 10
 
+
 def my_function():
     y = 5
     print(x + y)
@@ -471,6 +475,8 @@ print(x)  # x = '10' 출력.
 PI = 3.14  # 원주율 '파이' = 상수
 
 # 반지름을 받아서 원의 넓이 계산
+
+
 def calculate_area(r):  # r = 원의 반지름
     return PI * r * r
 
@@ -518,5 +524,3 @@ print(2 * PI * radius)
 print(PI * radius * radius)
 
 
-# [제어문]
-# 1> 'while 반복문'
