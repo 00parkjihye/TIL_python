@@ -20,6 +20,73 @@
 # 추상화 > 변수(Variable) / 함수(Function) / 객체(Object)
 
 
+# PEP 8 / Style Guide 중요포인트
+# 1> 이름: 모든 변수/함수 이름은 '소문자', 여러 단어일경우 '_(언더바)'로 연결.
+some_variable_name = 1
+
+
+def some_function_name():
+    print("Hello!")
+
+
+# 모든 상수이름은 '대문자'
+SOME_CONSTANT_NAME = 3.14
+
+# '의미있는 이름' 사용.
+radius = 2
+PI = 3.14
+print(PI * radius * radius)
+
+
+def say_hello():
+    print("Hello, Harry!")
+
+# White space(화이트 스페이스): 들여쓰기는 무조건 '4스페이스' 사용.
+
+
+def say_hello():
+    print("Hello, Harry!")  # 들여쓰기 4번
+
+# 함수 정의: 함수 정의 '위,아래로 빈 줄이 2개씩' 있어야. 파일의 첫 줄이 함수면 괜찮다.
+
+
+def a():  # 위,아래 빈 줄 2줄씩.
+    print('a')
+
+
+# 괄호 안: 괄호 바로 안은 띄어쓰기 하지 말 것.
+# spam( ham[ 1 ], { eggs: 2 } )  # 띄어쓰기의 안좋은 예.
+a(a[1], {a: 2})
+
+# 함수 괄호: 함수 정의/호출시, 함수 이름과 골호 사이 띄어쓰기 하지 말 것.
+
+
+# def spam  <함수명 <-> 괄호 사이 띄어쓰기 x> (a):
+
+
+def spam(a):
+    print(x + 2)
+
+
+# 쉼표: 쉼표 앞은 띄어쓰기 하지 말 것.
+print(a, b)  # good     print(a , b) >  # bad
+
+# 지정연산자: 지정연산자 앞뒤로 띄어쓰기를 하나씩.
+x = 1  # good
+
+# 연산자: 기본적으로 연산자 앞뒤로 띄어쓰기를 하나씩.
+i = i + 1
+submitted += 1
+
+# + 하지만 연산의 '우선순위' 강조를 위해서는 연산자 앞뒤로 띄어쓰기를 붙이는 것을 권장.
+x = x*2 - 1
+hypot2 = x*x + y*say_hello()
+c = (a+b) * (a-b)
+
+# 코멘트: 일반 코드와 같은 줄에 코멘트를 쓸 경우, 코멘트 앞 띄어쓰기를 최소 두 개.
+x = x + 1  # 코멘트
+
+
 # [핵심개념]
 # [자료형(Data Type)]
 # 1> 숫자형(정수) 연산
@@ -420,3 +487,36 @@ radius = 7
 print(f"반지름이 {radius}이면, 넓이는 {calculate_area(radius)}")
 # 반지름이 7이면, 넓이는 153.86
 
+
+# 10> 코딩 스타일: 이해하기 쉽고 가독성이 좋은 코드가 좋은 스타일을 가진 좋은 코드.
+# 나쁜 스타일 예시> 코드의 목적이 뭔지, 숫자들이 뭘 의미하는지 알 수 없고, 가독성이 떨어짐.
+print(6.28*4)  # 200.96
+print(3.14*4*4)  # 50.24
+print(6.28*8)  # 50.24
+print(3.14*8*8)  # 200.96
+
+# 좋은 스타일 예시> 숫자를 변수에 넣어 사용, 적절한 함수 사용 및 코멘트로 설명.
+PI = 3.14  # 원주율(파이)
+
+
+# 반지름이 r인 원의 둘레 계산
+def calculate_circumference(r):
+    return 2 * PI * r
+
+
+# 반지름이 r인 원의 넓이 계산
+def calculate_area(r):
+    return PI * r * r
+
+
+radius = 4  # 반지름
+print(2 * PI * radius)
+print(PI * radius * radius)
+
+radius = 8  # 반지름
+print(2 * PI * radius)
+print(PI * radius * radius)
+
+
+# [제어문]
+# 1> 'while 반복문'
