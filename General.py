@@ -76,13 +76,13 @@ print(a, a)  # good     print(a , b) >  # bad
 x = 1  # good
 
 # 연산자: 기본적으로 연산자 앞뒤로 띄어쓰기를 하나씩.
-i = a + 1
-a += 1
+x = x + 1
+x += 1
 
 # + 하지만 연산의 '우선순위' 강조를 위해서는 연산자 앞뒤로 띄어쓰기를 붙이는 것을 권장.
 x = x*2 - 1
-x = x*x + a*a
-c = (a+x) * (a-x)
+x = x*x + x*x
+c = (x+x) * (x-x)
 
 # 코멘트: 일반 코드와 같은 줄에 코멘트를 쓸 경우, 코멘트 앞 띄어쓰기를 최소 두 개.
 x = x + 1  # 코멘트
@@ -523,4 +523,50 @@ radius = 8  # 반지름
 print(2 * PI * radius)
 print(PI * radius * radius)
 
+# 예제1)
+# 어떤 수가 짝수인지 홀수인지 판단해 주는 함수 is_evenly_divisible 를 쓰세요.
+# is_evenly_divisible 는 number 를 파라미터로 받습니다.
+# 짝수인 경우, 즉 number 가 2로 나누어 떨어질 경우에는 True 를 리턴해 줍니다.
+# 홀수인 경우, 즉 number 가 2로 나누어 떨어지지 않을 경우에는 False 를 리턴해 줍니다.
+# 함수 안에는 print 문이 아닌, return 문을 사용해야 합니다. 불린 개념을 잘 사용하면, 함수 한 줄로 작성할 수 있습니다.
+
+
+def is_evenly_divisible(number):
+    # 코드를 작성하세요.
+    return number % 2 ==  0
+
+
+# 테스트
+print(is_evenly_divisible(3))  # False
+print(is_evenly_divisible(7))  # False
+print(is_evenly_divisible(8))   # True
+print(is_evenly_divisible(218))  # True
+print(is_evenly_divisible(317))  # False
+
+
+# 예제2)
+# 현명하게 거스름돈을 계산해 주는 프로그램을 만들려고 합니다. 예를 들어 33,000원짜리 물건을 사기 위해 100,000원을 냈다면,
+# 50,000원 1장
+# 10,000원 1장
+# 5,000원 1장
+# 1,000원 2장
+# 이런 식으로 '가장 적은 수'의 지폐를 거슬러 주는 것입니다. 방금 같은 경우에는 총 5장을 거슬러 준 거죠.
+# 우리는 calculate_change 라는 함수를 작성하려고 하는데요.
+# 이 함수는 지불한 금액을 나타내는 payment 와 물건의 가격을 나타내는 cost 를 파라미터로 받습니다.
+# 아래의 코드에 이어서 깔끔하게 프로그램을 작성해 보세요.
+
+
+def calculate_change(payment, cost):
+    # 코드를 작성하세요.
+    return
+
+# 테스트
+calculate_change(100000, 33000)  # 50000원 지폐: 1장, 10000원 지폐: 1장, 5000원 지폐: 1장, 1000원 지폐: 2장
+
+print()
+calculate_change(500000, 378000)  # 50000원 지폐: 2장, 10000원 지폐: 2장, 5000원 지폐: 0장, 1000원 지폐: 2장
+
+
+# [제어문]
+# 1> 'while 반복문'
 
