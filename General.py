@@ -1191,12 +1191,48 @@ while i < 10:
 # 출력결과:
 # C:\Program Files\Python35\Scripts\  # \ 문자.
 
-# 7) 같은 문자열 출력시 팁.
+# 7) 문자열 곱하기 응용 1
 # print("-"*10)  # 출력:---------- 이렇게 문자열에 곱하기를 사용하면 '문자열이 곱한 수 만큼' 나옵니다.
 print("\nHello Harry! "*3)
 # 출력결과:
 # Hello Harry! Hello Harry! Hello Harry!  # 문자열이 3번 나옴.
 
+# 8) 문자열 곱하기 응용 2
+# multistring.py
+print("=" * 50)
+print("My Program")
+print("=" * 50)
 
-# 2>
+# 출력결과: 프로그램을 실행시킬때 출력되는 화면 제일 위쪽에 프로그램 제목이 이처럼 표시된다.
+# ==================================================
+# My Program
+# ==================================================
 
+
+# 2> 여러 줄인 문자열을 변수에 대입할 때
+# 작은따옴표 사용
+multiline = '''  
+Life is too short
+You need python
+'''
+
+# 큰따옴표 사용
+multiline2 = """  
+Life is too short
+You need python
+"""
+
+# 출력결과:
+print(multiline)  # Life is too short (다음줄) You need python 2줄로 표현됨
+print(multiline2)  # Life is too short (다음줄) You need python 2줄로 표현됨
+
+
+# 3> 문자열 길이 구하기
+# len 함수로 구할 수 있다. len 함수는 print 함수처럼 파이썬의 기본 내장함수이다.
+
+a = "Life is too short"
+len(a)
+# 출력결과: 17(공백포함)
+
+
+#
