@@ -288,6 +288,194 @@ print(b.split(':'))  # ['a', 'b', 'c', 'd']
 # 위처럼 나눈 값은 리스트에 하나씩 들어감. ['Life', 'is', 'too', 'short']나 ['a', 'b', 'c', 'd']가 리스트.
 
 
+# 1> 이스케이프 문자(escape character): 원래 가지고 있던 문자열의 출력하는 기능을 벗어나 다른 특정한 기능을 하도록 하는 문자.
+#                                    \(백슬래시) 기호가 붙은 특수한 문자.
+# 1) \n : 다음 줄로 이동(개행)
+# 2) \r :해당 줄의 처음으로 이동
+# 3) \t : '8칸' 공백
+# 4) \' or \" : ' or " 문자
+# 5) \ : \문자
+
+# 1)\n
+# print("Hello\nWorld")
+# 출력결과:
+# Hello  # 다음줄로 개행.(줄 바꿈).
+# World
+
+# 2) \r
+# print("Hello\rHi")
+# 출력결과:
+# Hillo # Hello 출력 후 '맨 앞으로 이동해 Hi를 덮어씀.'
+#         한글과 영어를 섞어쓸 땐 결과가 다를 수 있는데, 영어는 글자당 1byte 한글은 2byte 라서.
+
+# 3) \t
+# print("Hello\tWorld")
+# 출력결과:
+# Hello   World # 문자사이 8칸이아닌 '앞 글자 포함 8칸'을 확보.(이경우 Hello+공백 합하여 8칸).
+
+# 4) \'
+# print("\'Hello World\'")
+# 출력결과:
+# 'Hello World'
+
+# 4-2) \"
+# print("\"Hello World\"")
+# 출력결과:
+# "Hello World"
+
+# 6) \\
+# print("C:\\Program Files\\Python35\Scripts\\")
+# 출력결과:
+# C:\Program Files\Python35\Scripts\  # \ 문자.
+
+# 7) 문자열 곱하기 응용 1
+# print("-"*10)  # 출력:---------- 이렇게 문자열에 곱하기를 사용하면 '문자열이 곱한 수 만큼' 나옵니다.
+print("\nHello Harry! "*3)
+# 출력결과:
+# Hello Harry! Hello Harry! Hello Harry!  # 문자열이 3번 나옴.
+
+# 출처: 점프투파이썬  # https://wikidocs.net/13
+# 8) 문자열 곱하기 응용 2
+# multistring.py
+print("=" * 50)
+print("My Program")
+print("=" * 50)
+
+# 출력결과: 프로그램을 실행시킬때 출력되는 화면 제일 위쪽에 프로그램 제목이 이처럼 표시된다.
+# ==================================================
+# My Program
+# ==================================================
+
+
+# 2> 여러 줄인 문자열을 변수에 대입할 때
+# 작은따옴표 사용
+multiline = '''  
+Life is too short
+You need python
+'''
+
+# 큰따옴표 사용
+multiline2 = """  
+Life is too short
+You need python
+"""
+
+# 출력결과:
+print(multiline)  # Life is too short (다음줄) You need python 2줄로 표현됨
+print(multiline2)  # Life is too short (다음줄) You need python 2줄로 표현됨
+
+
+# 3> 문자열 길이 구하기
+# len 함수로 구할 수 있다. len 함수는 print 함수처럼 파이썬의 기본 내장함수이다.
+
+a = "Life is too short"
+len(a)
+# 출력결과: 17(공백포함)
+
+
+# 4> 문자열 인덱싱(indexing): 문자열 가리키기. 'a[번호]'는 문자열 안의 특정한 값을 뽑아내는 역할.(리스트나 튜플에서도 사용가능)
+
+a = "Life is too short, You need Python"
+
+# 위 소스 코드에서 변수 a에 저장한 문자열의 각 문자마다 번호를 매기면 다음과 같다.
+# Life is too short, You need Python
+# 0         1         2         3
+# 0123456789012345678901234567890123
+# "Life is too short, You need Python" 문자열에서 L은 첫 번째 자리를 뜻하는 숫자 0, 바로 다음인 i는 1 같이 계속 번호를 붙인 것.
+# 중간에 있는 short 의 s는 12가 된다.
+
+# a = "Life is too short, You need Python"
+# a[3] == 'e'
+# a[3]이 뜻하는 것은 a라는 문자열의 네 번째 문자 e를 말한다. "파이썬은 0부터 숫자를 센다."
+
+# a[0]:'L', a[1]:'i', a[2]:'f', a[3]:'e', a[4]:' ', ...
+# a[번호]는 문자열 안의 특정한 값을 뽑아내는 역할.
+
+
+# 4-1> 문자열 인덱싱 활용하기
+# a = "Life is too short, You need Python"
+# a[0] == 'L'
+# a[12] == 's'
+# a[-1] == 'n'
+# a[-0] == 'L' == a[0]
+# 문자열을 뒤에서부터 읽기 위해 마이너스(-) 기호를 붙임. 즉, a[-1]은 뒤에서 첫 번째가 되는 문자.
+# 0과 -0은 똑같은 것이기 때문에 a[-0]은 a[0]과 똑같은 값.
+
+# a[-2] == 'o'
+# a[-5] == 'y'
+# a[-2]는 뒤에서 두 번째 문자. a[-5]는 뒤에서부터 다섯 번째 문자.
+
+
+# 5> 문자열 슬라이싱(slicing): 문자열에서 특정한 단어를 뽑아내는 방법.(리스트나 튜플에서도 사용가능)
+# 1) 단순접근:
+a = "Life is too short, You need Python"
+b = a[0] + a[1] + a[2] + a[3]
+print(b)  # 'Life'
+
+# 2) 슬라이싱 기법:
+a = "Life is too short, You need Python"
+print(a[12:17])  # 'short'
+# a[12:17]은 a 문자열 "Life is too short, You need Python" 문장에서 자리 번호 12부터 17까지 문자를 뽑아낸다는 뜻.
+print(a[12:16])  # 'shor'
+# 슬라이싱 기법으로 a[시작 번호:끝 번호] 지정시, 끝 번호는 포함하지 않음.
+# a[12:16]을 수식으로 나타내면,  # 12 <= a < 16
+# 이 수식을 만족하는 것은 a[12], a[13], a[14], a[15]. 따라서 a[12:16]은 'shor', a[12:17]는 'short'.
+
+print(a[0:5])  # 'Life '
+# 위 예는 a[0] + a[1] + a[2] + a[3] + a[4]와 동일하다. a[4]는 공백문자라서 'Life' 가 아닌 'Life ' 출력된다.
+# 공백 문자 역시 L, i, f, e 같은 문자와 동일하게 취급됨. 'Life' 와 'Life '는 완전히 다른 문자열이다.
+
+# 3) 슬라이싱할 떄, 항상 시작 번호가 0일 필요는 없다.
+print(a[0:2])  # 'Li'
+print(a[5:7])  # 'is'
+print(a[12:17])  # 'short'
+
+# 4) a[시작 번호:끝 번호], 끝 번호를 생략시 시작번호부터 문자열의 끝까지 뽑아낸다.
+print(a[19:])  # 'You need Python'
+
+# 5) a[시작 번호:끝 번호]에서 시작번호를 생략하면, 문자열의 처음부터 끝 번호까지 뽑아낸다.
+print(a[:17])  # 'Life is too short'
+
+# 6) a[시작 번호:끝 번호]에서 시작번호와 끝 번호를 생략하면, 문자열의 처음부터 끝까지를 뽑아낸다.
+print(a[:])  # 'Life is too short, You need Python'
+
+# 7) 슬라이싱에서도 인덱싱과 마찬가지로 마이너스(-)(:문자열 뒤에서부터 접근) 기호를 사용할 수 있다.
+print(a[19:-7])  # 'You need'
+# a[19:-7]은, a[19]에서부터 a[-8]까지. 이 역시 a[-7]은 포함하지 않음.
+
+# 8) 슬라이싱으로 문자열 나누기: 문자열을 나누는 방법.
+# 위 문자열을 두 부분으로 나누면,
+a = "20010331Rainy"
+date = a[:8]
+weather = a[8:]
+print(date)  # '20010331'
+print(weather)  # 'Rainy'
+# 숫자 8 기준으로 문자열 a를 양쪽으로 슬라이싱.
+# a[:8]은 a[7]까지 잘라내며, a[8:]은 a[8]부터 시작하므로 문자열 a를 '8'을 기준으로 나눌 수 있다.
+
+# 위 문자열을 세 부분으로 나누면,
+a = "20010331Rainy"
+year = a[:4]
+day = a[4:8]
+weather = a[8:]
+print(year)  # '2001'
+print(day)  # '0331'
+print(weather)  # 'Rainy'
+
+
+# ["Pithon" 문자열을, "Python"으로 바꾸려면?]
+# Pithon 문자열을 Python 으로 바꾸려면 어떻게 해야 할까? 제일 먼저 떠오르는 생각은 다음과 같을 것이다.
+# a = 'Pithon'  >  # a[1] = 'y' >  # i가 a[1]이므로, a[1] = 'y'로 글자를 바꾸어줌.
+# 하지만, 위 방법은 오류가 발생한다. 문자열의 요솟값은 바꿀 수 있는 값이 아니기 때문.(그래서 immutable 한 자료형이라고도 부른다.)
+
+# 슬라이싱을 이용해 변경하면,
+a = "Pithon"
+print(a[:1])  # 'P'
+print(a[2:])  # 'thon'
+print(a[:1] + 'y' + a[2:])  # 'Python'
+# 슬라이싱을 사용하면 "Pithon" 문자열을 'P' 부분과 'thon' 부분으로 나눌 수 있고 그 사이에 'y' 문자를 추가해, 'Python' 이라는 새로운 문자열을 만든다.
+
+
 # 5> 불린(Boolean): 따옴표 없이, 첫자는 대문자!
 # 불 대수의 값: 진리값(True, False). 2가지 값만 존재.
 # 불 대수의 연산 : AND, OR, NOT 연산.
@@ -1225,195 +1413,6 @@ while i < 10:
 
 # 결과: 1 3 5 7 9
 # 해설: 2로 나눈 나머지가 0이면, 즉 짝수면 print 문을 실행하지 하지않고 i의 값을 1 증가시킵니다.
-
-
-# []
-# 1> 이스케이프 문자(escape character): 원래 가지고 있던 문자열의 출력하는 기능을 벗어나 다른 특정한 기능을 하도록 하는 문자.
-#                                    \(백슬래시) 기호가 붙은 특수한 문자.
-# 1) \n : 다음 줄로 이동(개행)
-# 2) \r :해당 줄의 처음으로 이동
-# 3) \t : '8칸' 공백
-# 4) \' or \" : ' or " 문자
-# 5) \ : \문자
-
-# 1)\n
-# print("Hello\nWorld")
-# 출력결과:
-# Hello  # 다음줄로 개행.(줄 바꿈).
-# World
-
-# 2) \r
-# print("Hello\rHi")
-# 출력결과:
-# Hillo # Hello 출력 후 '맨 앞으로 이동해 Hi를 덮어씀.'
-#         한글과 영어를 섞어쓸 땐 결과가 다를 수 있는데, 영어는 글자당 1byte 한글은 2byte 라서.
-
-# 3) \t
-# print("Hello\tWorld")
-# 출력결과:
-# Hello   World # 문자사이 8칸이아닌 '앞 글자 포함 8칸'을 확보.(이경우 Hello+공백 합하여 8칸).
-
-# 4) \'
-# print("\'Hello World\'")
-# 출력결과:
-# 'Hello World'
-
-# 4-2) \"
-# print("\"Hello World\"")
-# 출력결과:
-# "Hello World"
-
-# 6) \\
-# print("C:\\Program Files\\Python35\Scripts\\")
-# 출력결과:
-# C:\Program Files\Python35\Scripts\  # \ 문자.
-
-# 7) 문자열 곱하기 응용 1
-# print("-"*10)  # 출력:---------- 이렇게 문자열에 곱하기를 사용하면 '문자열이 곱한 수 만큼' 나옵니다.
-print("\nHello Harry! "*3)
-# 출력결과:
-# Hello Harry! Hello Harry! Hello Harry!  # 문자열이 3번 나옴.
-
-# 출처: 점프투파이썬  # https://wikidocs.net/13
-# 8) 문자열 곱하기 응용 2
-# multistring.py
-print("=" * 50)
-print("My Program")
-print("=" * 50)
-
-# 출력결과: 프로그램을 실행시킬때 출력되는 화면 제일 위쪽에 프로그램 제목이 이처럼 표시된다.
-# ==================================================
-# My Program
-# ==================================================
-
-
-# 2> 여러 줄인 문자열을 변수에 대입할 때
-# 작은따옴표 사용
-multiline = '''  
-Life is too short
-You need python
-'''
-
-# 큰따옴표 사용
-multiline2 = """  
-Life is too short
-You need python
-"""
-
-# 출력결과:
-print(multiline)  # Life is too short (다음줄) You need python 2줄로 표현됨
-print(multiline2)  # Life is too short (다음줄) You need python 2줄로 표현됨
-
-
-# 3> 문자열 길이 구하기
-# len 함수로 구할 수 있다. len 함수는 print 함수처럼 파이썬의 기본 내장함수이다.
-
-a = "Life is too short"
-len(a)
-# 출력결과: 17(공백포함)
-
-
-# 4> 문자열 인덱싱(indexing): 문자열 가리키기. 'a[번호]'는 문자열 안의 특정한 값을 뽑아내는 역할.(리스트나 튜플에서도 사용가능)
-
-a = "Life is too short, You need Python"
-
-# 위 소스 코드에서 변수 a에 저장한 문자열의 각 문자마다 번호를 매기면 다음과 같다.
-# Life is too short, You need Python
-# 0         1         2         3 
-# 0123456789012345678901234567890123
-# "Life is too short, You need Python" 문자열에서 L은 첫 번째 자리를 뜻하는 숫자 0, 바로 다음인 i는 1 같이 계속 번호를 붙인 것.
-# 중간에 있는 short 의 s는 12가 된다.
-
-# a = "Life is too short, You need Python"
-# a[3] == 'e'
-# a[3]이 뜻하는 것은 a라는 문자열의 네 번째 문자 e를 말한다. "파이썬은 0부터 숫자를 센다."
-
-# a[0]:'L', a[1]:'i', a[2]:'f', a[3]:'e', a[4]:' ', ...
-# a[번호]는 문자열 안의 특정한 값을 뽑아내는 역할.
-
-
-# 4-1> 문자열 인덱싱 활용하기
-# a = "Life is too short, You need Python"
-# a[0] == 'L'
-# a[12] == 's'
-# a[-1] == 'n'
-# a[-0] == 'L' == a[0]
-# 문자열을 뒤에서부터 읽기 위해 마이너스(-) 기호를 붙임. 즉, a[-1]은 뒤에서 첫 번째가 되는 문자.
-# 0과 -0은 똑같은 것이기 때문에 a[-0]은 a[0]과 똑같은 값.
-
-# a[-2] == 'o'
-# a[-5] == 'y'
-# a[-2]는 뒤에서 두 번째 문자. a[-5]는 뒤에서부터 다섯 번째 문자.
-
-
-# 5> 문자열 슬라이싱(slicing): 문자열에서 특정한 단어를 뽑아내는 방법.(리스트나 튜플에서도 사용가능)
-# 1) 단순접근:
-a = "Life is too short, You need Python"
-b = a[0] + a[1] + a[2] + a[3]
-print(b)  # 'Life'
-
-# 2) 슬라이싱 기법:
-a = "Life is too short, You need Python"
-print(a[12:17])  # 'short'
-# a[12:17]은 a 문자열 "Life is too short, You need Python" 문장에서 자리 번호 12부터 17까지 문자를 뽑아낸다는 뜻.
-print(a[12:16])  # 'shor'
-# 슬라이싱 기법으로 a[시작 번호:끝 번호] 지정시, 끝 번호는 포함하지 않음.
-# a[12:16]을 수식으로 나타내면,  # 12 <= a < 16
-# 이 수식을 만족하는 것은 a[12], a[13], a[14], a[15]. 따라서 a[12:16]은 'shor', a[12:17]는 'short'.
-
-print(a[0:5])  # 'Life '
-# 위 예는 a[0] + a[1] + a[2] + a[3] + a[4]와 동일하다. a[4]는 공백문자라서 'Life' 가 아닌 'Life ' 출력된다.
-# 공백 문자 역시 L, i, f, e 같은 문자와 동일하게 취급됨. 'Life' 와 'Life '는 완전히 다른 문자열이다.
-
-# 3) 슬라이싱할 떄, 항상 시작 번호가 0일 필요는 없다.
-print(a[0:2])  # 'Li'
-print(a[5:7])  # 'is'
-print(a[12:17])  # 'short'
-
-# 4) a[시작 번호:끝 번호], 끝 번호를 생략시 시작번호부터 문자열의 끝까지 뽑아낸다.
-print(a[19:])  # 'You need Python'
-
-# 5) a[시작 번호:끝 번호]에서 시작번호를 생략하면, 문자열의 처음부터 끝 번호까지 뽑아낸다.
-print(a[:17])  # 'Life is too short'
-
-# 6) a[시작 번호:끝 번호]에서 시작번호와 끝 번호를 생략하면, 문자열의 처음부터 끝까지를 뽑아낸다.
-print(a[:])  # 'Life is too short, You need Python'
-
-# 7) 슬라이싱에서도 인덱싱과 마찬가지로 마이너스(-)(:문자열 뒤에서부터 접근) 기호를 사용할 수 있다.
-print(a[19:-7])  # 'You need'
-# a[19:-7]은, a[19]에서부터 a[-8]까지. 이 역시 a[-7]은 포함하지 않음.
-
-# 8) 슬라이싱으로 문자열 나누기: 문자열을 나누는 방법.
-# 위 문자열을 두 부분으로 나누면,
-a = "20010331Rainy"
-date = a[:8]
-weather = a[8:]
-print(date)  # '20010331'
-print(weather)  # 'Rainy'
-# 숫자 8 기준으로 문자열 a를 양쪽으로 슬라이싱.
-# a[:8]은 a[7]까지 잘라내며, a[8:]은 a[8]부터 시작하므로 문자열 a를 '8'을 기준으로 나눌 수 있다.
-
-# 위 문자열을 세 부분으로 나누면,
-a = "20010331Rainy"
-year = a[:4]
-day = a[4:8]
-weather = a[8:]
-print(year)  # '2001'
-print(day)  # '0331'
-print(weather)  # 'Rainy'
-
-
-# ["Pithon" 문자열을, "Python"으로 바꾸려면?]
-# Pithon 문자열을 Python 으로 바꾸려면 어떻게 해야 할까? 제일 먼저 떠오르는 생각은 다음과 같을 것이다.
-# a = 'Pithon'  >  # a[1] = 'y' >  # i가 a[1]이므로, a[1] = 'y'로 글자를 바꾸어줌.
-# 하지만, 위 방법은 오류가 발생한다. 문자열의 요솟값은 바꿀 수 있는 값이 아니기 때문.(그래서 immutable 한 자료형이라고도 부른다.)
-
-# 슬라이싱을 이용해 변경하면,
-a = "Pithon"
-print(a[:1])  # 'P'
-print(a[2:])  # 'thon'
-print(a[:1] + 'y' + a[2:])  # 'Python'
-# 슬라이싱을 사용하면 "Pithon" 문자열을 'P' 부분과 'thon' 부분으로 나눌 수 있고 그 사이에 'y' 문자를 추가해, 'Python' 이라는 새로운 문자열을 만든다.
 
 
 #
