@@ -792,10 +792,10 @@ print(len(t1))  # 4
 
 
 # 15> 딕셔너리: 사람은 누구든 "이름" = "홍길동", "생일" = "몇 월 며칠" 등으로 구별할 수 있다. 파이썬은 이런 대응관계를 나타낼 수 있는 자료형을 갖고있다.
-# 이를,'딕셔너리(Dictionary)'라 하고, 다른 언어에서 연관배열(Associative array) 또는 해시(Hash)라 한다.
+# 이를,'딕셔너리(Dictionary)'라 하고, 다른 언어에서 연관배열(Associative array) 또는 해시(Hash).
 # 즉, "people"에 "사람", "baseball"에 "야구"라는 뜻이 부합되듯 딕셔너리는 'Key와 Value를 한 쌍으로 갖는 자료형'
 # 딕셔너리는 리스트, 튜플처럼 순차적으로(sequential) 해당 요솟값을 구하지 않고, Key를 통해 Value를 얻으며 이것이 바로 딕셔너리의 가장 큰 특징.
-# baseball 단어 뜻을 찾으려 사전 내용을 순차적으로 모두 검색 않고, 'baseball이라는 단어가 있는 곳만 펼쳐 보는 것'
+# baseball 단어 뜻을 찾으려 사전 내용을 순차적으로 모두 검색않고, 'baseball이라는 단어가 있는 곳만 펼쳐 보는 것'
 
 # 1) 딕셔너리는 어떻게 만들까?
 # 기본 딕셔너리: {Key1:Value1, Key2:Value2, Key3:Value3, ...}
@@ -836,26 +836,93 @@ print(a)  # {2: 'b', 'name': 'pey', 3: [1, 2, 3]}
 # del 함수를 사용해 del a[key]입력시 Key에 해당하는 {key : value} 쌍 삭제.
 
 # 4) 딕셔너리 사용방법
-# 예를들어 4명의 사람이 있다, 각자 특기를 표현할 수 있는 좋은방법에 대해서 생각해 보자.
-# 위의 경우, 리스트, 문자열로는 표현하기 까다롭다. 하지만 딕셔너리를 사용하면 표현하기 쉽다.
+# 예를들어 4명의 사람이 있다, 각자 특기를 표현할 수 있는 좋은방법은? 이 경우 리스트, 문자열로는 표현하기 까다롭지만 딕셔너리를 사용하면 표현하기 쉽다.
 # {"김연아": "피겨스케이팅", "류현진": "야구", "박지성": "축구", "귀도": "파이썬"}  # 이름과 특기를 한 쌍으로 하는 딕셔너리.
 
-# 딕셔너리에 Key 사용해 Value 얻기
+# Key사용해 Value얻기: 딕셔너리 a는 a[Key]로 입력해 Key에 해당하는 Value를 얻는다. 어떤 Key의 Value를 얻기위해 딕셔너리변수이름[Key] 사용.
 grade = {'pey': 10, 'julliet': 99}
 print(grade['pey'])  # 10
 print(grade['julliet'])  # 99
-# 리스트, 튜플, 문자열은 요솟값을 얻고자 할 때 인덱싱이나 슬라이싱 기법을 사용했다. 하지만 딕셔너리는 단 한 가지 방법뿐이다.
-# Key를 사용해 Value를 구하는 방법. 위 예에서 'pey'라는 Key의 Value를 얻기위해 grade['pey']를 사용한 것처럼, 어떤 Key의 Value를 얻기 위해 딕셔너리변수이름[Key]를 사용.
+# 리스트, 튜플, 문자열은 요솟값을 얻을때 인덱싱, 슬라이싱 사용. 하지만 딕셔너리는 단 한 가지 방법뿐.
+
 a = {1: 'a', 2: 'b'}
 print(a[1])  # 'a'
 print(a[2])  # 'b'
-# a 변수에 {1:'a', 2:'b'} 딕셔너리를 대입. a[1]은 'a' 값을 돌려줌.
-# 리스트, 튜플의 a[1]은 두 번째 요소를 뜻하지만(0,1,2,..), 딕셔너리[ ] 안의 숫자 1은 'Key에 해당하는 1'을 나타냄.
+# a변수에 {1:'a', 2:'b'} 딕셔너리 대입. a[1]은 'a' 값 돌려줌.
+# 리스트, 튜플의 a[1]은 두 번째 요소를 뜻하지만(0,1,2,..), 딕셔너리[ ]안 숫자 1은 'Key에 해당하는 1'
 
 a = {'a': 1, 'b': 2}
 print(a['a'])  # 1
 print(a['b'])  # 2
-# 역시 a['a'], a['b']처럼 Key를 사용해 Value를 얻을 수 있다. 정리하면, 딕셔너리 a는 a[Key]로 입력해 Key에 해당하는 Value를 얻는다.
+# 역시 a['a'], a['b']처럼 Key를 사용해 Value를 얻을 수 있다.
+
+
+# 5) 딕셔너리 주의사항: 딕셔너리에 Key는 고유한 값, 중복되는 Key값을 설정하면 하나를 제외한 나머지 key가 모두 무시된다.
+# 동일한 Key가 2개 존재할 경우 나머지 쌍이 무시됨.
+a = {1: 'a', 1: 'b'}
+print(a)  # {1: 'b'}
+# Key가 중복일때, 1개를 제외한 나머지 Key:Value 값이 모두 무시. 동일한 Key 존재시 어떤 Key에 해당하는 Value를 불러야 할지 알 수 없기 때문.
+
+# 또, Key에는 리스트를 쓸 수 없지만 '튜플은 Key로 쓸 수' 있다.
+# 딕셔너리의 Key로 쓸 수 있느냐 없느냐는 Key가 변하는 값인지, 변하지 않는 값인지에 달려있다. 리스트는 그 값이 변할 수 있어 Key로 쓸 수 없다.
+# 리스트를 Key로 설정시 리스트를 키 값으로 사용할 수 없다는 오류발생.
+# a = {[1, 2]: 'hi'}  # File "<stdin>", line 1, in <module>  # TypeError: unhashable type: 'list'
+# 따라서 딕셔너리의 Key값으로 리스트를 사용할 수 없음. 단, Value에는 아무 값이나 넣을 수 있다.
+
+
+# 6) 딕셔너리 관련 함수들
+# Key리스트 만들기: '.keys()'  a.keys()는 딕셔너리 a의 Key만 모아 dict_keys 객체를 돌려줌.
+a = {'name': 'pey', 'phone': '0119993323', 'birth': '1118'}
+print(a.keys())  # dict_keys(['name', 'phone', 'birth'])
+
+# [파이썬 3.0 이후 버전의 keys 함수, 어떻게 달라졌나?]
+# 파이썬 2.7 버전까지는 a.keys() 함수호출시 반환값으로 dict_keys가 아닌 리스트를 돌려줬지만, 메모리 낭비가 발생. 메모리 낭비를 줄이려 dict_keys 객체를 돌려주게 됨.
+# 다음에 소개할 dict_values, dict_items 역시 파이썬 3.0 이후 추가된 것들. 만약 반환 값으로 리스트가 필요하면, 'list(a.keys())' 사용.
+# dict_keys, dict_values, dict_items 등은 리스트로 변환하지 않아도 기본적인 반복(iterate)구문(for문)을 실행할 수 있다.
+
+# dict_keys 객체는 리스트를 사용하는 것과 차이가 없지만, 리스트 고유의 append, insert, pop, remove, sort 함수는 수행할 수 없다.
+for k in a.keys():
+    print(k)  # name # phone # birth (아래로 한줄씩 순서대로 나옴)
+# print(k) 입력시 들여쓰기 하지 않으면 오류발생.
+
+# dict_keys 객체 리스트 변환: 'list(a.keys())' a딕셔너리의 키를 리스트로 변환.
+print(list(a.keys()))  # ['name', 'phone', 'birth']
+
+# Value 리스트 만들기: '.values()' Value만 얻고싶으면 values 함수사용. values 함수호출시 dict_values 객체를 돌려줌.
+print(a.values())  # dict_values(['pey', '0119993323', '1118'])
+
+# Key, Value 쌍 얻기: '.items()'  items 함수는 Key와 Value의 쌍을 '튜플로 묶은 값'을 dict_items 객체로 돌려줌.
+print(a.items())  # dict_items([('name', 'pey'), ('phone', '0119993323'), ('birth', '1118')])
+# dict_values, dict_items, dict_keys 객체는 리스트 사용과 동일하게 사용할 수 있다.
+
+# Key: Value 쌍 모두 지우기: '.clear()'  clear 함수는 딕셔너리 안 모든 요소삭제. 빈 딕셔너리는 { }로 표현.
+a.clear()
+print(a)  # {}  # {} = 빈 딕셔너리라는 뜻.
+
+# Key로 Value얻기: '.get(x)'  get(x)함수는 x라는 Key의 Value를 돌려줌. a.get('name')은 a['name']과 동일한 결괏값.
+a = {'name': 'pey', 'phone': '0119993323', 'birth': '1118'}
+print(a.get('name'))  # 'pey'
+print(a.get('phone'))  # '0119993323'
+
+# 존재하지 않는 키로 값을 가져올 경우: 1) 'a.get('없는 키')' = None 값 반환. / 2) 'a['없는 키']' = 오류발생.
+# a.get('nokey')는 None을 돌려줌. ※ 여기서 None은 "거짓"이라는 뜻.
+a = {'name': 'pey', 'phone': '0119993323', 'birth': '1118'}
+print(a.get('nokey'))  # None
+# print(a['nokey'])  # File "<stdin>", line 1, in <module>  # KeyError: 'nokey' > 이경우는 에러발생.
+
+# Key값 부재시 디폴트 값 불러오기: 'get(x, '디폴트 값')' 찾으려는 x값이 없을때, '디폴트 값' 불러옴.
+print(a.get('foo', 'bar'))  # 'bar'
+# a 딕셔너리에 'foo' 값이 없으므로 디폴트 값인 'bar'를 돌려줌.
+
+# Key가 딕셔너리에 있는지 조사(in): '('찾을값' in a)'  a딕셔너리에 '찾을값'이 있는지 조사해 True, False를 돌려줌.
+a = {'name': 'pey', 'phone': '0119993323', 'birth': '1118'}
+print('name' in a)  # True
+print('email' in a)  # False
+# 'name' 문자열은 a딕셔너리의 Key이므로, 'name' in a를 호출하면 참(True)을 돌려줌.
+# 반대로 'email'은 a딕셔너리 안에 존재하지 않는 Key이므로, 거짓(False)을 돌려줌.
+
+
+# 16> 집합(set):
 
 
 # [추상화(Abstraction)]
