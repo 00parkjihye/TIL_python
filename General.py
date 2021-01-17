@@ -978,6 +978,16 @@ print(s1 | s2)  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
 print(s1.union(s2))  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 
+# 2-3. 차집합
+# 1) "빼기(-)" 기호 사용: 'print(a1 - a2)' a1에서 a2와 다른 요소 프린트.
+print(s1 - s2)  # {1, 2, 3}
+print(s2 - s1)  # {8, 9, 7}
+
+# 2) difference 함수: 'print(a1.difference(a2)' a1에서 a2와 다른 요소 프린트.
+print(s1.difference(s2))  # {1, 2, 3}
+print(s2.difference(s1))  # {8, 9, 7}
+
+
 # [추상화(Abstraction)]
 # 1> 변수(Variable): '값'을 저장.
 # 예시1)
