@@ -968,7 +968,14 @@ print(s1 & s2)  # {4, 5, 6}
 
 # 2) 교집합 intersection 함수: 'print(a1.intersection(a2))' a1과 a2의 교집합 프린트.
 print(s1.intersection(s2))  # {4, 5, 6}
-# s2.intersection(s1)도 결과동일.
+
+
+# 2-2. 합집합
+# 1) "|" 기호 사용: 'print(a1 | a2)' 이때 4, 5, 6처럼 중복포함된 값은 한 개씩만 표현.
+print(s1 | s2)  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+# 2) union 함수: 'print(a1.union(a2))' a1과 a2의 합집합 프린트.
+print(s1.union(s2))  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 
 # [추상화(Abstraction)]
