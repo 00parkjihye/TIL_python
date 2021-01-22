@@ -1061,7 +1061,43 @@ print_kwargs(name='foo', age=3)  # {'age': 3, 'name': 'foo'}
 # ※ kwargs는 keyword arguments의 약자. args와 마찬가지로 관례적으로 사용.
 
 
-# 2-3) 
+# 2-3) 매개변수에 초기값 미리설정
+# 조금 다른 형태로 함수의 인수를 전달하는 방법. 매개변수에 초기값 미리 설정하기.
+
+def say_myself(name1, old, man=True):
+    print("나의 이름은 %s 입니다." % name1)
+    print("나이는 %d살입니다." % old)
+    if man:
+        print("남자입니다.")
+    else:
+        print("여자입니다.")
+# say_myself함수는 3개의 매개변수를 받아 man이 True면 "남자입니다", False면 "여자입니다" 출력.
+
+# 매개변수가 name, old, man=True 이렇게 3개. man=True는 매개변수에 미리 값을 넣어 준 것.
+# 이게 바로 함수의 매개변수 초기값을 설정하는 방법. 함수의 매개변수에 들어갈 값이 항상 변하는 것이 아닐경우 함수의 초기값을 미리 설정해 두면 유용.
+
+# say_myself("HARRY", 27)  # say_myself("HARRY", 27, True)
+# 입력값으로 "HARRY", 27을 주면 name에 "HARRY", old에 27이 대입. man에는 입력값이 없지만 초기값 True를 갖게지므로 2 호출방법 모두 동일결과 출력.
+# 나의 이름은 HARRY 입니다.  # 나이는 27살입니다.  # 남자입니다.
+
+# 이제 초기값이 설정된 부분을 False로 바꿔보자 > say_myself("HARRIOT", 27, False)
+# man에 False 값이 대입되 다음 결과가 출력된다.
+# 나의 이름은 HARRIOT 입니다.  # 나이는 27살입니다.  # 여자입니다.
+
+# 함수의 매개변수에 초깃값을 설정할 때 주의점: 초기값을 설정한 매개변수는 항상 마지막에 위치!
+
+# def say_myself(name1, man=True, old):  # 위치오류! 
+#     print("나의 이름은 %s 입니다." % name1)
+#     print("나이는 %d살입니다." % old)
+#     if man:
+#         print("남자입니다.")
+#     else:
+#         print("여자입니다.")
+
+# 바뀐 부분은 초기값을 설정한 매개변수의 위치. 이것은 함수를 실행할 때 오류가 발생.
+# SyntaxError: non-default argument follows default argument
+# 위 오류 메시지는 초기값을 설정한 매개변수 뒤에 초깃값을 설정하지않은 매개변수는 사용할 수 없다.
+# 매개변수로 (name, old, man=True)는 되지만 (name, man=True, old)는 안 된다. 초기화시키고 싶은 매개변수를 항상 뒤쪽에.
 
 
 # 3> 함수(Function): '명령'저장. 내부적으로 복잡한 동작과정을 몰라도 간편하게 사용가능. python에서는 들여쓰기로 함수의 범위를 나타냄.
