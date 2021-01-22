@@ -1029,10 +1029,20 @@ z = z + 1  # 7  # z = 6 + 1  즉, 7 = 6 + 1
 # '=' 할당연산자: 우측 값을 좌측(변수)에 할당(지정)함.
 
 
-# 2> 함수(Function): '명령' 저장. 내부적으로 복잡한 동작과정을 몰라도 간편하게 사용가능.
-# python에서는 들여쓰기로 함수의 범위를 나타냄.
+# 2> 함수(Function): '명령'저장. 내부적으로 복잡한 동작과정을 몰라도 간편하게 사용가능. python에서는 들여쓰기로 함수의 범위를 나타냄.
+
+# 함수의 구조:
+# def 함수명(매개변수):
+#     <수행할 문장1>
+#     <수행할 문장2>
+
 # 예시1)
-print("Hello Harry!")  # Hello Harry!
+def add(a1, b2):
+    return a1+b2
+
+
+result = add(b2=5, a1=3)  # b2에 5, a1에 3 전달  # 매개변수 지정시, 순서와 상관없이 사용가능.
+print(result)  # 8
 
 
 # 예시2) 파라미터(Parameter,매개변수): 함수를 정의할때 쓰는 변수(함수에 넘겨주는 값)
@@ -1045,12 +1055,26 @@ def hello(name):
 hello("Hermione")  # Hello! Hermione Welcome to Burrow!
 
 
-# 예시3) 여러개의 파라미터
+# 예시3) 여러 개의 파라미터
 def print_sum(num1, num2, num3):
     print(num1 + num2 + num3)
 
 
 print_sum(7, 3, 2)  # 7 + 3 + 2 = 12
+
+
+# 예시4) 키워드 파라미터 kwargs: 키워드 파라미터 사용시 매개변수 앞 별 두 개(**)를 붙임.
+
+def print_kwargs(**kwargs):
+    print(kwargs)
+
+
+# print_kwargs함수는 매개변수 kwargs를 출력하는 함수.
+print_kwargs(a=1)  # {'a': 1}
+print_kwargs(name='foo', age=3)  # {'age': 3, 'name': 'foo'}
+# 입력값 a=1, name='foo', age=3 모두 딕셔너리로 만들어져 출력된다.
+# **kwargs처럼 매개변수 이름 앞 **을 붙이면, 매개변수 kwargs는 딕셔너리가 되고, 모든 key=value 형태의 결괏값이 그 딕셔너리에 저장.
+# ※ 여기에서 kwargs는 keyword arguments의 약자. args와 마찬가지로 관례적으로 사용.
 
 
 # 2-1> 함수(function)의 실행순서
