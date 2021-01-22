@@ -1064,7 +1064,7 @@ print_sum(7, 3, 2)  # 7 + 3 + 2 = 12
 
 
 # 예시4) 키워드 파라미터 kwargs: 키워드 파라미터 사용시 매개변수 앞 별 두 개(**)를 붙임.
-
+# **kwargs처럼 매개변수 이름 앞 **을 붙이면, 매개변수 kwargs는 딕셔너리가 되고, 모든 key=value 형태의 결괏값이 그 딕셔너리에 저장.
 def print_kwargs(**kwargs):
     print(kwargs)
 
@@ -1072,9 +1072,43 @@ def print_kwargs(**kwargs):
 # print_kwargs함수는 매개변수 kwargs를 출력하는 함수.
 print_kwargs(a=1)  # {'a': 1}
 print_kwargs(name='foo', age=3)  # {'age': 3, 'name': 'foo'}
-# 입력값 a=1, name='foo', age=3 모두 딕셔너리로 만들어져 출력된다.
-# **kwargs처럼 매개변수 이름 앞 **을 붙이면, 매개변수 kwargs는 딕셔너리가 되고, 모든 key=value 형태의 결괏값이 그 딕셔너리에 저장.
-# ※ 여기에서 kwargs는 keyword arguments의 약자. args와 마찬가지로 관례적으로 사용.
+# 입력값 a=1, name='foo', age=3 모두 딕셔너리로 만들어져 출력.
+# ※ kwargs는 keyword arguments의 약자. args와 마찬가지로 관례적으로 사용.
+
+
+# 예시5) 함수의 결괏값은 언제나 하나!
+# add_and_mul함수는 2개의 입력인수를 받아 더한 값,곱한 값을 돌려주는 함수.
+def add_and_mul(a, b):
+    return a+b, a*b
+
+
+# 이 함수를 호출하면?
+result = add_and_mul(3, 4)
+# 결괏값은 a+b와 a*b 2개, 결괏값을 받아들이는 변수는 result 하나이므로 오류가 발생할까? 하지만 오류는 발생하지 않는다.
+# 함수의 결괏값은 2개가 아니라 언제나 1개다. add_and_mul함수 결괏값 a+b와 a*b는 튜플값인 (a+b, a*b) 하나로 돌려줌.
+print(result)  # (7, 12)  # 즉 결괏값으로 (7, 12)라는 튜플 값을 가짐.
+
+# 하나의 튜플 값을 2개의 결괏값처럼 받으려면 다음과 같이 호출하면 된다.
+result1, result2 = add_and_mul(3, 4)
+print(result1, result2)  # 7 12
+# result1, result2 = (7, 12)가 되어 result1은 7이 되고 result2는 12가 된다.
+
+
+# 또 다음과 같은 의문이 생길 수도 있다.
+def add_and_mul(a, b):
+    return a+b
+    return a*b
+# 위와 같이 return문을 2번 사용하면, 2개의 결괏값을 돌려주지 않을까?
+
+
+result = add_and_mul(2, 3)
+print(result)  # 5  # add_and_mul(2, 3)의 결괏값은 5 하나뿐. 두 번째 return문인 return a*b는 실행되지 않았다.
+
+
+# 따라서 이 함수는 다음과 완전히 동일하다.
+def add_and_mul(a, b):
+    return a+b
+# 즉, 함수는 return문을 만나는 순간 결괏값을 돌려준 다음 함수를 빠져나가게 된다.
 
 
 # 2-1> 함수(function)의 실행순서
@@ -1099,7 +1133,7 @@ print(square(3) + square(4))  # 25
 print("함수 호출 후")  # 함수 호출 후
 
 
-# 3> 'return 문': 함수에 어떤 정보를 주면 특정 값 반환(돌려줌) + 함수를 즉시 종료시킴.
+# 3> 'return 문': 함수에 어떤정보를 주면 특정 값을 반환(돌려줌) + 함수를 즉시 종료시킴.
 # 예시1)
 def get_square(c):
     return c * c
@@ -1108,7 +1142,7 @@ def get_square(c):
 print(get_square(3))  # 3 * 3 = 9
 
 y = get_square(2)
-print(y)  # 2 * 2 = 4 > y = 4. # print(y) = print(4) > 최종출력 4.
+print(y)  # 2 * 2 = 4  즉, y = 4  # print(y) = print(4) > 최종출력 4
 
 
 # 예시2)
@@ -1116,19 +1150,33 @@ def get_square(d):
     return d * d
 
 
-print(get_square(3) + get_square(4))
-# 3 * 3 = 9 + 4 * 4 = 16  # 9 + 16 = 25
+print(get_square(3) + get_square(4))  # 25
+# (3 * 3 = 9) + (4 * 4 = 16)  # 9 + 16 = 25
 
 
-# 예시3)
+# 예시3) Dead Code(의미없는 코드) - 사용될 일 없는 코드
 def square(n):
-    print("함수 시작")
+    print("함수시작")
     return n * n
-    # print("함수 끝")  # Dead Code(의미없는 코드) - 사용될 일 없는 코드
+    # print("함수 끝")
 
 
-print(square(3))  # 함수 시작 # 9
+print(square(3))  # 함수시작 # 9
 print("Hello Harry!")  # Hello Harry!
+
+
+# 예시4) 'return을 단독'으로 써서 함수를 즉시 빠져나갈 수 있다.
+def say_nick(nick):
+    if nick == "바보":
+        return
+    print("나의 별명은 %s 입니다." % nick)
+# 위 함수는 별명을 입력받아 출력하는 함수. 이 함수 역시 '반환 값(결괏값)은 없다.'
+# (문자열을 출력하는 것과 반환 값이 있는 것은 전혀다른 말이다. 함수의 '반환 값'은 오로지 'return문'에 의해서만 생성됨.)
+
+
+say_nick('야호')  # 나의 별명은 야호입니다.
+say_nick('바보')
+# 만약 입력값으로 '바보'라는 값이 들어오면, 문자열을 출력않고 함수를 즉시 빠져나감.
 
 
 # 4> 'return'과 'print'의 차이
