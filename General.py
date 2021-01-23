@@ -1086,7 +1086,7 @@ def say_myself(name1, old, man=True):
 
 # 함수의 매개변수에 초깃값을 설정할 때 주의점: 초기값을 설정한 매개변수는 항상 마지막에 위치!
 
-# def say_myself(name1, man=True, old):  # 위치오류! 
+# def say_myself(name1, man=True, old):  # 위치오류!
 #     print("나의 이름은 %s 입니다." % name1)
 #     print("나이는 %d살입니다." % old)
 #     if man:
@@ -1268,7 +1268,7 @@ x = x % 7 == 'x %= 7'
 # 8> scope(범위): 변수의 사용 가능 범위.
 # 함수에서 변수를 사용시, 로컬 변수 > 글로벌 변수 순으로 사용.
 
-# 예시1) 로컬 변수(local variable): 함수 내에서 정의해, 함수 내에서만 사용.
+# 8-1) 로컬 변수(local variable): 함수 내에서 정의해, 함수 내에서만 사용.
 def my_function():
     f = 3  # 로컬변수(local variable)
     print(f)
@@ -1278,7 +1278,8 @@ my_function()  # 함수호출 > x = 3 > print(x = 3) > '3' 출력
 # print(f)  # 함수호출 > x = 3 > print(x = 3) > my_function()줄을 거쳐 print(x) 실행 > 오류발생
 # > NameError: name 'f' is not defined('f'가 정의된적 없다) > 'f'는 로컬 변수이므로 유효하지 않은 범위에서 사용
 
-# 예시2) 전역 변수(global variable): 함수 밖에서 정의해, 모든 곳에서 사용. 단, 함수 내에서 수정 할 수 없음.
+
+# 8-2) 전역 변수(global variable): 함수 밖에서 정의해, 모든 곳에서 사용. 단, 함수 내에서 수정 할 수 없음.
 x = 2
 
 
@@ -1290,7 +1291,7 @@ my_function()  # x = 2 > 함수 > my_function 함수호출 > print(x = 2) > '2' 
 print(x)  # x = 2 > '2' 출력.
 
 
-# 예시3)
+# 예시1)
 x = 2  # 전역(글로벌) 변수
 
 
@@ -1303,12 +1304,56 @@ my_function()  # my_function 함수호출 > x = 3 > print(x = 3) > '3' 출력.
 print(x)  # x = 2 > '2' 출력. # 글로벌 변수 사용.
 
 
-# 파라미터도 로컬 변수!
+# 8-3) 파라미터도 로컬 변수!
 def square(x):  # 파라미터 'x' = square 함수 내에서만 쓸 수 있는 로컬 변수!
     return x * x
 
 
 print(square(3))  # x = 3 > 3 * 3 = '9' 출력.
+
+
+# 8-4) 함수 안에서 함수 밖의 변수변경: test함수를 사용해 함수 밖 변수 a를 1만큼 증가시킬 수 있는 방법?
+# 1. return 사용
+a = 1
+
+
+def test(a):
+    a = a + 1
+    return a
+
+
+a = test(a)
+print(a)  # 2
+# test함수는 입력값에 1을 더한값을 돌려준다. 따라서 a = test(a)를 대입하면 a가 test 함수의 결괏값으로 바뀐다.
+# 여기에서도 test 함수 안 매개변수 a는 함수 밖 a와는 다름.
+
+
+# 예시)
+a = 2
+
+
+def test(a):
+    a = a + 1
+    return a
+
+
+a = test(a)
+print(a)  # 3
+
+
+# 2. global 명령어 사용
+a = 1
+
+
+def test():
+    global a
+    a = a + 1
+
+
+test()
+print(a)  # 2
+# test 함수 안 global a 문장은 함수 안에서 함수 밖의 a 변수를 직접 사용하겠다는 뜻. 하지만 프로그래밍을 할 때 global 명령어는 사용하지 않는 것이 좋다.
+# 왜냐하면 함수는 독립적으로 존재하는 것이 좋기 때문. 외부 변수에 종속적인 함수는 좋은 함수가 아니다. 그러므로 가급적 이 방법은 피하고 첫 번째 방법을 사용하기를 권한다.
 
 
 # 예제1)
