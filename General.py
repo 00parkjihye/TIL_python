@@ -1415,6 +1415,26 @@ print(2 * PI * radius)
 print(PI * radius * radius)
 
 
+# 10> lambda: 함수생성시 사용하는 예약어, def와 동일한 역할. 보통 함수를 한줄로 간결하게 만들 때 사용.
+# def를 사용할 정도로 복잡하지 않거나, def를 사용할 수 없는 곳에 주로 쓰인다.
+
+# lambda 매개변수1, 매개변수2, ... : 매개변수를 이용한 표현식
+
+add = lambda a, b: a + b
+result = add(3, 4)
+print(result)  # 7
+# add는 두 개의 인수를 받아 서로 더한값을 돌려주는 lambda 함수. 위는 def를 사용한 다음 함수와 하는 일이 완전히 동일하다.
+
+
+def add(a, b):
+    return a+b
+
+
+result = add(3, 4)
+print(result)  # 7
+# lambda 함수는 return 명령어가 없어도 결괏값을 돌려준다.
+
+
 # 예제1)
 # 어떤 수가 짝수인지 홀수인지 판단해 주는 함수 is_evenly_divisible 를 쓰세요.
 # is_evenly_divisible 는 number 를 파라미터로 받습니다.
