@@ -1229,12 +1229,20 @@ def get_square(m):  # 파라미터 m의 제곱을 '리턴' 해주는 함수.
 
 
 print_square(2)  # m = 2 / 2 * 2 = 4 > '4' 출력.
-get_square(2)  # m = 2 / 2 * 2 = 4 > get_square 가 '4'로 대체됨.
-# 하지만 대체되기만 할 뿐, 출력하라는 명령이 없으므로 아무것도 출력되지않고 그대로 함수종료.
-print(print_square(3))  # 9 와 None 이 출력.
-# m = 3 / 3 * 3 = 9 > print 9 > '9' 출력.
-# print_square() 함수에는 return 문이 없음 > return 할 값이 없으므로 'None' 출력.
+get_square(2)  # m = 2 / 2 * 2 = 4 > get_square 가 '4'로 대체. 하지만 대체되기만 할 뿐, 출력하라는 명령이 없으므로 아무것도 출력않고 그대로 함수종료.
+print(print_square(3))  # 9 와 None 출력.
+# m = 3 / 3 * 3 = 9 > print 9 > '9' 출력. print_square() 함수에는 return 문이 없음 > return 할 값이 없으므로 'None' 출력.
 # 파이썬에선 리턴문이 없으면, 리턴값이 없다는 의미에서 'None' 출력.
+
+
+# +) print 조금 더 알기
+# 문자열 띄어쓰기는 콤마
+print("life "+"is"+" too short")  # life is too short
+print("life", "is", "too short")  # life is too short
+
+# 한 줄에 결괏값 출력하기: 한 줄에 결괏값을 계속 이어 출력하려면 매개변수 end를 사용해 끝 문자를 지정해야 한다.
+for i in range(10):
+    print(i, end=' ')  # 0 1 2 3 4 5 6 7 8 9
 
 
 # 6> 옵셔널 파라미터(Optional Parameter): 필수로 값을 넘겨줄 필요가 없는 파라미터.
